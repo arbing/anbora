@@ -14,7 +14,7 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Anbora.Core
+namespace Anbora.Core.MVVM
 {
     /// <summary>
     /// A map that exposes commands in a WPF binding friendly manner

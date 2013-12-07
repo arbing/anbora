@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Anbora.Core.Class
+namespace Anbora.Core.MVVM
 {
     public class DelegateCommand : ICommand
     {

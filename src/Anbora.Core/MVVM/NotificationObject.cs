@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Anbora.Core
+namespace Anbora.Core.MVVM
 {
     public class NotificationObject : INotifyPropertyChanged
     {
-        protected void RaisePropertyChanged<T>(Expression<Func<T>> action)
+        public void RaisePropertyChanged<T>(Expression<Func<T>> action)
         {
             var propertyName = GetPropertyName(action);
             RaisePropertyChanged(propertyName);
@@ -19,7 +19,7 @@ namespace Anbora.Core
             return propertyName;
         }
 
-        private void RaisePropertyChanged(string propertyName)
+        public void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));

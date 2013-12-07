@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 
-namespace Anbora.Core
+namespace Anbora.Core.Collection
 {
     public class ObservableDictionary<TKey, TValue> : IDictionary<TKey, TValue>, INotifyCollectionChanged, INotifyPropertyChanged
     {
