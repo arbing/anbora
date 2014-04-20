@@ -1,9 +1,9 @@
-﻿<Window x:Class="Unix2Dos.MainWindow"
+﻿<Window x:Class="ConvertEoL.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow"
-        Width="600"
-        Height="360"
+        Title="ConvertEoL（行尾标准化） by ArBing"
+        Width="640"
+        Height="420"
         FontFamily="Microsoft YaHei"
         FontSize="18">
     <Border Padding="5">
@@ -18,7 +18,11 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Margin="5">
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Margin="5"
+                                AllowDrop="True"
+                                DragEnter="OnDragEnter"
+                                Drop="Input_OnDrop"
+                                Orientation="Horizontal">
                         <TextBlock Width="80" Text="Input：" />
                         <TextBox x:Name="TbInput"
                                  Width="300"
@@ -30,7 +34,11 @@
                                  Width="300"
                                  Text="*.cs" />
                     </StackPanel>
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Margin="5"
+                                AllowDrop="True"
+                                DragEnter="OnDragEnter"
+                                Drop="Output_OnDrop"
+                                Orientation="Horizontal">
                         <TextBlock Width="80" Text="Output：" />
                         <TextBox x:Name="TbOutput"
                                  Width="300"
@@ -40,21 +48,29 @@
                 <StackPanel Grid.Column="1"
                             MinWidth="150"
                             Margin="5">
-                    <RadioButton x:Name="RbtnConvertMode"
-                                 Margin="5"
-                                 Content="Unix2Dos"
-                                 GroupName="Main"
-                                 IsChecked="True" />
-                    <RadioButton Margin="5"
-                                 Content="Dos2Unix"
-                                 GroupName="Main" />
+                    <ComboBox x:Name="CmbConvertMode"
+                              Margin="5"
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="Windows(CR LF)" />
+                        <ComboBoxItem Content="Unix(LF)" />
+                        <ComboBoxItem Content="Macintosh(CR)" />
+                    </ComboBox>
+                    <Button x:Name="BtnCheck"
+                            Margin="5"
+                            Click="BtnCheck_OnClick"
+                            Content="Check" />
                     <Button x:Name="BtnRun"
                             Margin="5"
                             Click="BtnRun_OnClick"
                             Content="Run" />
                 </StackPanel>
             </Grid>
-            <ListBox x:Name="LbLog" Grid.Row="1" />
+            <RichTextBox Grid.Row="1"
+                         Margin="0,0,0,0.5"
+                         HorizontalScrollBarVisibility="Visible"
+                         VerticalScrollBarVisibility="Visible">
+                <FlowDocument x:Name="FdLog" />
+            </RichTextBox>
         </Grid>
     </Border>
 </Window>
